@@ -1,4 +1,4 @@
-﻿namespace PoolsBase.Excel;
+﻿namespace VoetbalPoolsBase.Excel;
 
 public static class ExcelBaseConfiguration
 {

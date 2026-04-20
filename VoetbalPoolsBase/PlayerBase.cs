@@ -1,6 +1,6 @@
-﻿using PoolsBase.Interfaces;
+﻿using VoetbalPoolsBase.Interfaces;
 
-namespace PoolsBase
+namespace VoetbalPoolsBase
 {
     public class PlayerBase<T>
     {

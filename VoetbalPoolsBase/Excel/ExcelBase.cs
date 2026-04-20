@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using excel = Microsoft.Office.Interop.Excel;
 
-namespace PoolsBase.Excel
+namespace VoetbalPoolsBase.Excel
 {
     public class ExcelBase
     {

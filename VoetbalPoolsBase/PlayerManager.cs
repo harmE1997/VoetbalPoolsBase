@@ -1,7 +1,7 @@
-﻿using PoolsBase.Interfaces;
+﻿using VoetbalPoolsBase.Interfaces;
 using System.Text.Json;
 
-namespace PoolsBase
+namespace VoetbalPoolsBase
 {
     [Serializable]
     public class PlayerManager<T, U> where T : PlayerBase<U>

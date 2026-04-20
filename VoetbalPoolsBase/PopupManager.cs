@@ -1,4 +1,4 @@
-﻿namespace PoolsBase
+﻿namespace VoetbalPoolsBase
 {
     public static class PopupManager
     {

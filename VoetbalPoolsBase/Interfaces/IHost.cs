@@ -1,4 +1,4 @@
-﻿namespace PoolsBase.Interfaces
+﻿namespace VoetbalPoolsBase.Interfaces
 {
     public interface IHost
     {
