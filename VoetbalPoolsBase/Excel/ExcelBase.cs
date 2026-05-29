@@ -89,7 +89,7 @@ namespace VoetbalPoolsBase.Excel
                     if (host)
                         round = Convert.ToInt32(xlRange.Cells[i, ExcelBaseConfiguration.BonusRoundsColumn].value2);
 
-                    string value = xlRange.Cells[i, ExcelBaseConfiguration.BonusAnswerColumn].value2;
+                    string value = xlRange.Cells[i, ExcelBaseConfiguration.BonusAnswerColumn].value2 ?? i.ToString();
                     if (string.IsNullOrEmpty(value))
                         answers.Add(value, round);
 
