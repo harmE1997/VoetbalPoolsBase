@@ -99,7 +99,11 @@ namespace VoetbalPoolsBase.Excel
 
                 return answers;
             }
-            catch (Exception e) { return null; }
+            catch (Exception e) 
+            { 
+                PopupManager.ShowMessage("Cannot read predictions. Problem at bonusquestions."); 
+                return null; 
+            }
             finally { CleanWorkbook(); }
         }
 
