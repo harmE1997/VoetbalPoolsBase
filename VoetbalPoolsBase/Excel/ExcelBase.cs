@@ -105,9 +105,11 @@ namespace VoetbalPoolsBase.Excel
 
         public Match[] ReadBlock(int blocknr, int blocksize, int miss, bool host = false)
         {
-            Match[] Poule = new Match[blocksize];
+            Match[] block = new Match[blocksize];
 
             int startrow = ExcelBaseConfiguration.StartRow + (blocksize + 1) * (blocknr) + miss;
+            if (blocknr >= ExcelBaseConfiguration.FirstHalfSize)
+                startrow += ExcelBaseConfiguration.HalfWayJump;
 
             try
             {
@@ -115,10 +117,13 @@ namespace VoetbalPoolsBase.Excel
                 {
                     double a = 99;
                     double b = 99;
+                    double p = 0;
                     int currentRow = startrow + rowschecked;
 
+                    var pt = xlRange.Cells[currentRow, ExcelBaseConfiguration.PostponementColumn].Value2;
                     var at = xlRange.Cells[currentRow, ExcelBaseConfiguration.HomeColumn].Value2;
                     var bt = xlRange.Cells[currentRow, ExcelBaseConfiguration.OutColumn].Value2;
+
 
                     if (at == null || bt == null)
                     {
@@ -132,10 +137,19 @@ namespace VoetbalPoolsBase.Excel
                         b = bt;
                     }
 
-                    Match match = new Match(Convert.ToInt16(a), Convert.ToInt16(b), 0);
-                    Poule[rowschecked] = match;
+                    if (pt != null)
+                        p = pt;
+
+                    bool motw = false;
+                    if (rowschecked == blocksize - 1 && blocksize == 9)
+                    {
+                        motw = true;
+                    }
+
+                    Match match = new Match(Convert.ToInt16(a), Convert.ToInt16(b), motw, 0);
+                    block[rowschecked] = match;
                 }
-                return Poule;
+                return block;
             }
             catch (Exception e) { return null; }
         }

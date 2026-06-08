@@ -27,6 +27,6 @@ namespace VoetbalPoolsBase
             Ranking = 0;
         }
 
-        public virtual void CheckPlayer(IHost Host, Dictionary<string, Topscorer> topscorers) { }
+        public virtual void CheckPlayer(IHost Host, Dictionary<string, Topscorer> topscorers, int startWeek, int endWeek, bool periodCalculation) { }
     }
 }

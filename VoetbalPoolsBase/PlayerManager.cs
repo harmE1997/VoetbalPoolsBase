@@ -1,5 +1,5 @@
-﻿using VoetbalPoolsBase.Interfaces;
-using System.Text.Json;
+﻿using System.Text.Json;
+using VoetbalPoolsBase.Interfaces;
 
 namespace VoetbalPoolsBase
 {
@@ -7,7 +7,7 @@ namespace VoetbalPoolsBase
     public class PlayerManager<T, U> where T : PlayerBase<U>
     {
         private JsonSerializerOptions jsonSerializerOptions;
-        public List<T> Players { get; private set; }
+        public List<T> Players { get; set; }
 
         public PlayerManager()
         {
@@ -87,11 +87,11 @@ namespace VoetbalPoolsBase
 
         }
 
-        public void CheckAllPlayers(IHost host)
+        public void CheckAllPlayers(IHost host, int startWeek, int endWeek, bool periodCalculation)
         {
             foreach (T player in Players)
             {
-                player.CheckPlayer(host, host.GetTopscorers());
+                player.CheckPlayer(host, host.GetTopscorers(), startWeek, endWeek, periodCalculation);
             }
 
             SavePlayers();
