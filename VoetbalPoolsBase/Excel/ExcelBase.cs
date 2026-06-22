@@ -141,7 +141,7 @@ namespace VoetbalPoolsBase.Excel
                         b = bt;
                     }
 
-                    if (pt != null)
+                    if (pt != null && pt != string.Empty && pt != " ")
                         p = pt;
 
                     bool motw = false;
