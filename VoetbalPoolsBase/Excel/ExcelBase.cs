@@ -77,12 +77,12 @@ namespace VoetbalPoolsBase.Excel
             finally { CleanWorkbook(); }
         }
 
-        public Dictionary<string, int> ReadBonus(string filename, int sheet, bool host = false)
+        public List<KeyValuePair<string, int>> ReadBonus(string filename, int sheet, bool host = false)
         {
             InitialiseWorkbook(filename, sheet);
             try
             {
-                var answers = new Dictionary<string, int>();
+                var answers = new List<KeyValuePair<string, int>>();
                 for (int i = ExcelBaseConfiguration.BonusStartRow; i < (ExcelBaseConfiguration.BonusStartRow + ExcelBaseConfiguration.NrBonusAnswers); i++)
                 {
                     int round = 1;
@@ -91,10 +91,10 @@ namespace VoetbalPoolsBase.Excel
 
                     string value = xlRange.Cells[i, ExcelBaseConfiguration.BonusAnswerColumn].value2 ?? i.ToString();
                     if (string.IsNullOrEmpty(value))
-                        answers.Add(value, round);
+                        answers.Add(new KeyValuePair<string, int>(value, round));
 
                     else
-                        answers.Add(value.ToLower(), round);
+                        answers.Add(new KeyValuePair<string, int>(value.ToLower(), round));
                 }
 
                 return answers;
