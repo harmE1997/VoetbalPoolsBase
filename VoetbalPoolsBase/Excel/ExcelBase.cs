@@ -50,16 +50,16 @@ namespace VoetbalPoolsBase.Excel
                 while (true)
                 {
                     Topscorer ts = new Topscorer() { Total = 0, Rounds = new List<int>() };
-                    string name = Convert.ToString(xlRange.Cells[i, 1].value2).ToLower();
+                    string name = Convert.ToString(xlRange.Cells[i, 2].value2).ToLower();
                     if (string.IsNullOrEmpty(name))
                         break;
-                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 3].value2);
+                    ts.Total = Convert.ToInt32(xlRange.Cells[i, 4].value2);
 
                     if (readScoresPerRound)
                     {
                         for (int x = 0; x < 34; x++)
                         {
-                            var round = Convert.ToInt32(xlRange.Cells[i, x + 4].value2);
+                            var round = Convert.ToInt32(xlRange.Cells[i, x + 5].value2);
                             ts.Rounds.Add(round);
                         }
                     }
